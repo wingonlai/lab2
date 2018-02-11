@@ -29,14 +29,14 @@ class ReadFileWriteFile {
 			/*
 			 * Open input file as a BufferedReader
 			 */ 
-			File fin = new File("/nfs/ug/homes-5/l/laiyong/workspace/lab2/src/data.txt"); 
+			File fin = new File("data.txt"); 
 			FileReader fis = new FileReader(fin);  
 			bis = new BufferedReader(fis);  
 			
 			/*
 			 * Open file for output 
 			 */
-			FileOutputStream fout =  new FileOutputStream("/nfs/ug/homes-5/l/laiyong/workspace/lab2/src/output.txt");
+			FileOutputStream fout =  new FileOutputStream("output.txt");
 			pout = new PrintStream (fout);
 			/*
 			 *  Read file line-by-line until the end of the file 
