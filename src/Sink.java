@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class Sink {
 	 public static void main(String[] args) throws IOException 
 	  {
-		 FileOutputStream fout =  new FileOutputStream("/nfs/ug/homes-5/l/laiyong/workspace/lab2/src/part2_output.txt");
+		 FileOutputStream fout =  new FileOutputStream("part2_output.txt");
 		 PrintStream pout = new PrintStream (fout);
 		 DatagramSocket socket = new DatagramSocket(4444);
 		 byte[] buf = new byte[256];

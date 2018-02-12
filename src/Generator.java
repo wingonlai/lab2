@@ -9,7 +9,7 @@ public class Generator {
 		//file stuff
 		BufferedReader bis = null; 
 		String currentLine = null;
-		File fin = new File("/nfs/ug/homes-5/l/laiyong/workspace/lab2/poisson3.data");
+		File fin = new File("poisson3.data");
 		FileReader fis = new FileReader(fin);
 		bis = new BufferedReader(fis);
 		
