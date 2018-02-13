@@ -42,7 +42,7 @@ end
 
 subplot(3,1,2);
 plot(time_array2,cumulative_arrival2);
-title('Token Bucket (bucket.3.2.txt)');
+title('Token Bucket');
 xlabel('time (in microseconds)');
 ylabel('culmulative arrival (in bytes)');
 
@@ -63,7 +63,7 @@ end
 
 subplot(3,1,3);
 plot(time_array3,cumulative_arrival3);
-title('Traffic Sink (TrafficSinkOutput.txt)');
+title('Traffic Sink)');
 xlabel('time (in microseconds)');
 ylabel('culmulative arrival (in bytes)');
 
@@ -86,7 +86,7 @@ hold on
 hkeg1= legend(h1,'number of tokens','backlog');
 
 
-title('Token Bucket (bucket.3.2.txt)');
+title('Token Bucket');
 xlabel('time (in microseconds)');
 ylabel('token bucket and backlog');
 
