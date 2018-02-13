@@ -31,7 +31,7 @@ public class Movie_generator {
 			int fSize = Integer.parseInt(col4);
             
             // Check if the delay is long enough. If not, go into the while lock.
-            while(nTime != -1 && System.nanoTime() - nTime < 33*1000);
+            while(nTime != -1 && System.nanoTime() - nTime < 33*1000000);
 			if(nTime == -1)
                 nTime = System.nanoTime();
                 

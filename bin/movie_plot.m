@@ -31,13 +31,13 @@ ylabel('culmulative arrival (in bytes)');
 
 %token bucket output
 [arrival_time, packetsize_p2, back_log, num_of_tokens] = textread('movie_bucket.txt', '%f %f %f %f');
-time_array2 = zeros(1,80000);
-cumulative_arrival2 = zeros(1,80000);
+time_array2 = zeros(1,2834948);
+cumulative_arrival2 = zeros(1,2834948);
 
 time_array2(1) = arrival_time(1);
 cumulative_arrival2(1) = packetsize_p2(1);
 i=2
-while i<=80000
+while i<=2834948
     time_array2(i) = time_array2(i-1) + arrival_time(i);
     cumulative_arrival2(i) = cumulative_arrival2(i-1) + packetsize_p2(i);
     i=i+1;
@@ -52,13 +52,13 @@ ylabel('culmulative arrival (in bytes)');
 
 %sink output
 [packet_no_p3, arrival_time, packetsize_p3] = textread('movie_output.txt', '%f %f %f');
-time_array3 = zeros(1,80000);
-cumulative_arrival3 = zeros(1,80000);
+time_array3 = zeros(1,2834948);
+cumulative_arrival3 = zeros(1,2834948);
 
 time_array3(1) = arrival_time(1);
 cumulative_arrival3(1) = packetsize_p3(1);
 i=2
-while i<=80000
+while i<=2834948
     time_array3(i) = arrival_time(i);
     cumulative_arrival3(i) = cumulative_arrival3(i-1) + packetsize_p3(i);
     i=i+1;
@@ -75,8 +75,8 @@ ylabel('culmulative arrival (in bytes)');
 %in the buffer as a function of time
 figure(2);
 subplot(1,1,1);
-num_of_tokens_to_plot = zeros(1,80000);
-back_log_to_plot = zeros(1,80000);
+num_of_tokens_to_plot = zeros(1,2834948);
+back_log_to_plot = zeros(1,2834948);
 i=1;
 while i<=80000
     num_of_tokens_to_plot(i) = num_of_tokens(i);

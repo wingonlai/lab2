@@ -29,7 +29,7 @@ public class Eth_generator {
 			double fTime = Float.parseFloat(col1);
 			int fSize = Integer.parseInt(col2);
             
-            double nGap = (long)((fTime - nLasttime)*1000);
+            double nGap = (long)((fTime - nLasttime)*1000000000);
             // Check if the delay is long enough. If not, go into the while lock.
             while(nTime != -1 && System.nanoTime() - nTime < nGap);
 			if(nTime == -1)
