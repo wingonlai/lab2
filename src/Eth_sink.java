@@ -4,13 +4,13 @@ import java.util.StringTokenizer;
 import java.lang.*;
 import java.util.Arrays;
 
-public class Sink {
+public class Eth_sink {
 	 public static void main(String[] args) throws IOException 
 	  {
-		 FileOutputStream fout =  new FileOutputStream("possion_output.txt");
+		 FileOutputStream fout =  new FileOutputStream("Eth_output.txt");
 		 PrintStream pout = new PrintStream (fout);
-		 DatagramSocket socket = new DatagramSocket(4444);
-		 byte[] buf = new byte[256];
+		 DatagramSocket socket = new DatagramSocket(4445);
+		 byte[] buf = new byte[2048];
 		 DatagramPacket p = new DatagramPacket(buf, buf.length);
 		 System.out.println("Waiting ..."); 
 		 long nLastTime = -1;

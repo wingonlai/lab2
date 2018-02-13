@@ -4,12 +4,12 @@ import java.util.StringTokenizer;
 import java.lang.*;
 import java.util.Arrays;
 
-public class Generator {
+public class Eth_generator {
 	public static void main(String[] args) throws IOException {
 		//file stuff
 		BufferedReader bis = null; 
 		String currentLine = null;
-		File fin = new File("poisson3.data");
+		File fin = new File("Eth.TL");
 		FileReader fis = new FileReader(fin);
 		bis = new BufferedReader(fis);
 		
@@ -18,29 +18,37 @@ public class Generator {
 		DatagramSocket socket = new DatagramSocket();
 		
 		currentLine = bis.readLine();
-		long nTime = -1;
-		long nLasttime = 0;
+        long nTime = -1;
+        double nLasttime = 0.0;
 		while (currentLine != null)
 		{
 			StringTokenizer st = new StringTokenizer(currentLine); 
 			String col1 = st.nextToken(); 
 			String col2 = st.nextToken(); 
-			String col3  = st.nextToken(); 
 			
-			int nSeq = Integer.parseInt(col1);
-			int nATime = Integer.parseInt(col2);
-			int nSize = Integer.parseInt(col3);
+			double fTime = Float.parseFloat(col1);
+			int fSize = Integer.parseInt(col2);
             
-            long nDelay = (nATime - nLasttime) * 1000;
-			byte[] buf = new byte[nSize];
+            double nGap = (long)((fTime - nLasttime)*1000);
+            // Check if the delay is long enough. If not, go into the while lock.
+            while(nTime != -1 && System.nanoTime() - nTime < nGap);
+			if(nTime == -1)
+                nTime = System.nanoTime();
+                
+            while(fSize > 1024){
+                byte[] buf = new byte[1024];
+                Arrays.fill(buf, (byte)'a');
+                DatagramPacket packet =
+                     new DatagramPacket(buf, buf.length, addr, 4444);
+                socket.send(packet);
+                fSize = fSize - 1024;
+            }
+			byte[] buf = new byte[fSize];
 			Arrays.fill(buf, (byte)'a');
 			DatagramPacket packet =
 	                 new DatagramPacket(buf, buf.length, addr, 4444);
-			while(nTime != -1 && System.nanoTime() - nTime < nDelay);
-			if(nTime == -1)
-				nTime = System.nanoTime();
-			socket.send(packet);
-			nLasttime = nATime;
+            socket.send(packet);
+            nLasttime = fTime;
 			nTime = System.nanoTime();
 			currentLine = bis.readLine();
 		}

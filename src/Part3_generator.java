@@ -4,7 +4,7 @@ import java.util.StringTokenizer;
 import java.lang.*;
 import java.util.Arrays;
 
-public class Generator {
+public class Part3_generator {
 	public static void main(String[] args) throws IOException {
 		//file stuff
 		BufferedReader bis = null; 
