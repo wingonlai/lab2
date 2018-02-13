@@ -31,12 +31,11 @@ public class Generator {
 			int nSize = Integer.parseInt(col3);
 			
 			byte[] buf = new byte[nSize];
-			Arrays.fill(buf, (byte)'a');
 			DatagramPacket packet =
 	                 new DatagramPacket(buf, buf.length, addr, 4444);
-			while(nTime != -1 && System.currentTimeMillis() - nTime < nDelay);
+			while(nTime != -1 && System.nanoTime()/1000 - nTime < nDelay);
 			if(nTime == -1)
-				nTime = System.currentTimeMillis();
+				nTime = System.nanoTime()/1000;
 			socket.send(packet);
 			currentLine = bis.readLine();
 		}

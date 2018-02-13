@@ -7,10 +7,10 @@ import java.util.Arrays;
 public class Sink {
 	 public static void main(String[] args) throws IOException 
 	  {
-		 FileOutputStream fout =  new FileOutputStream("/nfs/ug/homes-5/l/laiyong/workspace/lab2/src/part2_output.txt");
+		 FileOutputStream fout =  new FileOutputStream("/nfs/ug/homes-5/l/laiyong/workspace/lab2/src/part2_output.data");
 		 PrintStream pout = new PrintStream (fout);
 		 DatagramSocket socket = new DatagramSocket(4444);
-		 byte[] buf = new byte[256];
+		 byte[] buf = new byte[4096];
 		 DatagramPacket p = new DatagramPacket(buf, buf.length);
 		 System.out.println("Waiting ..."); 
 		 long nLastTime = -1;
@@ -20,7 +20,7 @@ public class Sink {
 		 {
 			 long nGap = 0;
 			 socket.receive(p);
-			 long nCurrentTime = System.currentTimeMillis();
+			 long nCurrentTime = System.nanoTime()/1000;
 			 if(nLastTime != -1)
 				 nGap = nCurrentTime - nLastTime;
 			 if(nInitTime == -1)
